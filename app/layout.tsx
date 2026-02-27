@@ -15,9 +15,9 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   // He actualizado esto para que se vea mejor en Google y pestañas
-  title: "CrafterJe | Back End Developer Portfolio",
+  title: "CrafterJe | Back End Developer Portafolio",
   description: "Desarrollador de software especializado en aplicaciones web modernas y soluciones escalables.",
-  keywords: ["Next.js", "React", "Full Stack", "Software Engineering", "Portfolio"],
+  keywords: ["Next.js", "React", "Backend Developer", "Software Engineering", "Portafolio"],
 };
 
 export default function RootLayout({

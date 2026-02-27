@@ -1,6 +1,6 @@
 # Raul Juarez Suarez — Portafolio
 
-Personal portfolio built with Next.js 16, Tailwind CSS v4, TypeScript, and Framer Motion.
+Personal portafolio built with Next.js 16, Tailwind CSS v4, TypeScript, and Framer Motion.
 
 ## Tech Stack
 
@@ -17,7 +17,7 @@ app/
 │   ├── sections/     # Page sections (Hero, About, Skills, Projects)
 │   └── ui/           # Reusable UI components (Navbar)
 ├── lib/
-│   └── data.ts       # Portfolio content & personal info
+│   └── data.ts       # Portafolio content & personal info
 ├── globals.css
 ├── layout.tsx
 └── page.tsx
