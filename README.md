@@ -1,4 +1,4 @@
-# Raul Juarez Suarez — Portfolio
+# Raul Juarez Suarez — Portafolio
 
 Personal portfolio built with Next.js 16, Tailwind CSS v4, TypeScript, and Framer Motion.
 
