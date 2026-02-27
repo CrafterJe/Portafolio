@@ -57,3 +57,8 @@ body {
     gap: 2rem !important;
   }
 }
+@media (max-width: 768px) {
+  .featured-card {
+    grid-template-columns: 1fr !important;
+  }
+}
