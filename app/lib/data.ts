@@ -13,9 +13,26 @@ export const personalInfo = {
 };
 
 export const skills = [
-  { category: "Frontend", items: ["React", "Next.js", "TypeScript", "Tailwind CSS"] },
-  { category: "Backend", items: ["Node.js", "Express", "PostgreSQL", "MongoDB", "Django"] },
-  { category: "Tools", items: ["Git", "Docker", "VS Code"] },
+  {
+    category: "Frontend",
+    items: ["React", "Next.js", "Angular", "TypeScript", "JavaScript", "Tailwind CSS", "Vite"],
+  },
+  {
+    category: "Backend",
+    items: ["Node.js", "Python", "Django", "PHP", "C#", "C++"],
+  },
+  {
+    category: "Mobile",
+    items: ["Flutter", "Dart", ".NET MAUI", "Android Studio"],
+  },
+  {
+    category: "Database",
+    items: ["MongoDB", "PostgreSQL", "MySQL"],
+  },
+  {
+    category: "Tools & DevOps",
+    items: ["Git", "VS Code", "Visual Studio"],
+  },
 ];
 
 export const projects = [
