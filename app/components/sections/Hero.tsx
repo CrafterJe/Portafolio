@@ -2,9 +2,34 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useState, useEffect } from "react";
 import { personalInfo } from "@/app/lib/data";
 
+const roles = ["Back End Developer", "Mobile Developer"];
+
 export default function Hero() {
+  const [roleIndex, setRoleIndex] = useState(0);
+  const [displayed, setDisplayed] = useState("");
+  const [deleting, setDeleting] = useState(false);
+
+  useEffect(() => {
+    const current = roles[roleIndex];
+    let timeout: ReturnType<typeof setTimeout>;
+
+    if (!deleting && displayed.length < current.length) {
+      timeout = setTimeout(() => setDisplayed(current.slice(0, displayed.length + 1)), 80);
+    } else if (!deleting && displayed.length === current.length) {
+      timeout = setTimeout(() => setDeleting(true), 2000);
+    } else if (deleting && displayed.length > 0) {
+      timeout = setTimeout(() => setDisplayed(current.slice(0, displayed.length - 1)), 40);
+    } else if (deleting && displayed.length === 0) {
+      setDeleting(false);
+      setRoleIndex((prev) => (prev + 1) % roles.length);
+    }
+
+    return () => clearTimeout(timeout);
+  }, [displayed, deleting, roleIndex]);
+
   return (
     <section
       id="hero"
@@ -32,13 +57,7 @@ export default function Hero() {
         }}
       />
 
-      <div
-        style={{
-          maxWidth: "1100px",
-          width: "100%",
-          margin: "0 auto",
-        }}
-      >
+      <div style={{ maxWidth: "1100px", width: "100%", margin: "0 auto" }}>
         {/* Saludo */}
         <motion.p
           initial={{ opacity: 0, y: 20 }}
@@ -72,7 +91,7 @@ export default function Hero() {
           {personalInfo.name}
         </motion.h1>
 
-        {/* Título */}
+        {/* Título con typing effect */}
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -84,9 +103,21 @@ export default function Hero() {
             lineHeight: 1.2,
             letterSpacing: "-0.02em",
             marginBottom: "1.5rem",
+            minHeight: "1.2em",
           }}
         >
-          {personalInfo.title}
+          {displayed}
+          <span
+            style={{
+              display: "inline-block",
+              width: "3px",
+              height: "1em",
+              backgroundColor: "#6366f1",
+              marginLeft: "4px",
+              verticalAlign: "middle",
+              animation: "blink 1s step-end infinite",
+            }}
+          />
         </motion.h2>
 
         {/* Bio */}
@@ -129,6 +160,7 @@ export default function Hero() {
           >
             Ver proyectos
           </a>
+
           <a
             href={`mailto:${personalInfo.email}`}
             style={{
@@ -166,6 +198,7 @@ export default function Hero() {
           >
             GitHub ↗
           </a>
+
           <a
             href={personalInfo.social.linkedin}
             target="_blank"

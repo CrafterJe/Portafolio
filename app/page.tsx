@@ -6,6 +6,7 @@ import Skills from "@/app/components/sections/Skills";
 import Projects from "@/app/components/sections/Projects";
 import CV from "@/app/components/sections/CV";
 import Footer from "@/app/components/sections/Footer";
+import ScrollToTop from "@/app/components/ui/ScrollToTop";
 
 export default function Home() {
   return (
@@ -17,6 +18,7 @@ export default function Home() {
       <Projects />
       <CV />
       <Footer />
+      <ScrollToTop />
     </main>
   );
 }
