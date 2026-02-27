@@ -62,3 +62,17 @@ body {
     grid-template-columns: 1fr !important;
   }
 }
+
+/* make sure all elements use border-box sizing for easier layout work */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* tiny‑phone tweaks */
+@media (max-width: 480px) {
+  section {
+    padding: 6rem 1rem; /* reduce vertical padding slightly on very small screens */
+  }
+}
