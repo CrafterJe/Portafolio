@@ -2,7 +2,7 @@
 
 Personal portfolio built with Next.js 16, Tailwind CSS v4, TypeScript, and Framer Motion.
 
-## 🚀 Tech Stack
+## Tech Stack
 
 - **Framework:** Next.js 16 (App Router)
 - **Styling:** Tailwind CSS v4
@@ -10,7 +10,7 @@ Personal portfolio built with Next.js 16, Tailwind CSS v4, TypeScript, and Frame
 - **Language:** TypeScript
 - **Deployment:** Hostinger (static export)
 
-## 📁 Project Structure
+## Project Structure
 ```
 app/
 ├── components/
@@ -25,7 +25,7 @@ public/
 └── cv/               # Downloadable CV
 ```
 
-## 🛠️ Getting Started
+## Getting Started
 ```bash
 # Install dependencies
 npm install
@@ -37,7 +37,7 @@ npm run dev
 npm run build
 ```
 
-## 📦 Deployment
+## Deployment
 
 This project uses Next.js static export for deployment on Hostinger:
 ```bash
@@ -46,6 +46,6 @@ npm run build
 
 Upload the contents of the `out/` folder to your Hostinger `public_html` directory.
 
-## 📄 License
+## License
 
 MIT © 2025 Raul Juarez Suarez
