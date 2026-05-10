@@ -1,0 +1,6 @@
+{
+  "rewrites": [
+    { "source": "/QRCraft",        "destination": "https://qr-craft-omega.vercel.app/" },
+    { "source": "/QRCraft/:path*", "destination": "https://qr-craft-omega.vercel.app/:path*" }
+  ]
+}

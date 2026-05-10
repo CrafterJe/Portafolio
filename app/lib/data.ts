@@ -87,6 +87,16 @@ export const projects = [
     featured: false,
   },
   {
+    id: 7,
+    title: "QRCraft",
+    description: "Generador de códigos QR personalizados con estilos avanzados de puntos, degradados, logo central y exportación en PNG y SVG.",
+    image: "",
+    tags: ["React", "Vite", "Tailwind CSS", "qr-code-styling"],
+    github: "https://github.com/CrafterJe",
+    live: "https://crafterje.com/QRCraft",
+    featured: true,
+  },
+  {
     id: 6,
     title: "Compresser",
     description: "Herramienta para comprimir, estructurar y optimizar contenido de forma eficiente dentro de flujos de trabajo específicos.",

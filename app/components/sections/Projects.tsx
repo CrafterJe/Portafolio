@@ -12,6 +12,7 @@ const placeholderColors: Record<string, string> = {
   "Popular Opinion": "linear-gradient(135deg, #f97316 0%, #eab308 100%)",
   "Compresser": "linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%)",
   "Compresor de Archivos": "linear-gradient(135deg, #64748b 0%, #475569 100%)",
+  "QRCraft": "linear-gradient(135deg, #6366f1 0%, #09090b 100%)",
 };
 
 function ProjectImage({ title }: { title: string }) {
