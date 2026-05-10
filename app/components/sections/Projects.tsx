@@ -1,7 +1,7 @@
 // app/components/sections/Projects.tsx
 "use client";
 
-import Image from "next/image";
+import { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { projects } from "@/app/lib/data";
 
@@ -17,11 +17,23 @@ const placeholderColors: Record<string, string> = {
 };
 
 function ProjectImage({ title, image }: { title: string; image: string }) {
-  if (image) {
+  const [failed, setFailed] = useState(false);
+  const imgRef = useRef<HTMLImageElement>(null);
+
+  useEffect(() => {
+    const img = imgRef.current;
+    if (img && img.complete && img.naturalWidth === 0) setFailed(true);
+  }, []);
+
+  if (image && !failed) {
     return (
-      <div style={{ position: "relative", width: "100%", height: "100%" }}>
-        <Image src={image} alt={title} fill style={{ objectFit: "cover" }} />
-      </div>
+      <img
+        ref={imgRef}
+        src={image}
+        alt={title}
+        style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
+        onError={() => setFailed(true)}
+      />
     );
   }
   return (
