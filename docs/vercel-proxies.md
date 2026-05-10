@@ -24,14 +24,30 @@ El rewrite es transparente: el usuario nunca sale de `crafterje.com`.
 
 ## Configuración en este portafolio (vercel.json)
 
-Por cada proyecto nuevo agregar dos entradas — una para la raíz y otra para subrutas:
+### Si el proyecto usa `base: '/NombreProyecto/'` (Vite con ruta absoluta)
+
+Dos reglas simples:
 
 ```json
 { "source": "/MiProyecto",        "destination": "https://mi-proyecto.vercel.app/" },
 { "source": "/MiProyecto/:path*", "destination": "https://mi-proyecto.vercel.app/:path*" }
 ```
 
-> La `destination` apunta a la **raíz** del proyecto (`/`), no a `/MiProyecto`.
+### Si el proyecto usa `base: './'` (Vite con rutas relativas)
+
+Necesita un redirect primero para forzar el trailing slash, de lo contrario el browser
+resuelve `./assets/` desde la raíz del dominio en vez de desde `/NombreProyecto/`:
+
+```json
+// En "redirects":
+{ "source": "/MiProyecto", "destination": "/MiProyecto/", "permanent": false },
+
+// En "rewrites":
+{ "source": "/MiProyecto/",       "destination": "https://mi-proyecto.vercel.app/" },
+{ "source": "/MiProyecto/:path*", "destination": "https://mi-proyecto.vercel.app/:path*" }
+```
+
+> La `destination` apunta siempre a la **raíz** del proyecto (`/`), no a `/MiProyecto`.
 > El portafolio es quien expone la ruta `/MiProyecto`.
 
 ---
@@ -100,10 +116,24 @@ o ajustar manualmente los `href` y `src`.
 
 ---
 
-## El proyecto proxeado NO necesita su propio vercel.json
+## ¿El proyecto proxeado necesita su propio vercel.json?
 
-No hace falta ningún rewrite del lado del proyecto hijo.
-Solo necesita el `base` correcto según su framework.
+Depende. Si es una SPA (React, Vue, etc.) desplegada en un subpath, **sí necesita su propio vercel.json**
+para que Vercel sirva `index.html` en todas las rutas internas y redirija los assets correctamente.
+
+Ejemplo (Vite con `base: '/NombreProyecto/'`):
+
+```json
+{
+  "rewrites": [
+    { "source": "/NombreProyecto/assets/:path*", "destination": "/assets/:path*" },
+    { "source": "/NombreProyecto",               "destination": "/index.html" },
+    { "source": "/NombreProyecto/:path*",         "destination": "/index.html" }
+  ]
+}
+```
+
+Si el proyecto no usa rutas internas (HTML estático, backend puro), no necesita nada.
 
 ---
 
@@ -162,4 +192,4 @@ Si algo falla dime exactamente qué está mal y corrígelo.
 
 | Ruta        | Framework | Destino                         |
 |-------------|-----------|---------------------------------|
-| `/QRCraft`  | Vite      | `TU-URL.vercel.app` (pendiente) |
+| `/QRCraft`  | Vite (`base: '/QRCraft/'`) | `qr-craft-omega.vercel.app` |
