@@ -1,6 +1,7 @@
 // app/components/sections/Projects.tsx
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { projects } from "@/app/lib/data";
 
@@ -15,7 +16,14 @@ const placeholderColors: Record<string, string> = {
   "QRCraft": "linear-gradient(135deg, #6366f1 0%, #09090b 100%)",
 };
 
-function ProjectImage({ title }: { title: string }) {
+function ProjectImage({ title, image }: { title: string; image: string }) {
+  if (image) {
+    return (
+      <div style={{ position: "relative", width: "100%", height: "100%" }}>
+        <Image src={image} alt={title} fill style={{ objectFit: "cover" }} />
+      </div>
+    );
+  }
   return (
     <div
       style={{
@@ -111,7 +119,7 @@ export default function Projects() {
             >
               {/* Imagen */}
               <div style={{ height: "100%", minHeight: "300px" }}>
-                <ProjectImage title={project.title} />
+                <ProjectImage title={project.title} image={project.image} />
               </div>
 
               {/* Info */}
@@ -240,7 +248,7 @@ export default function Projects() {
             >
               {/* Imagen */}
               <div style={{ height: "180px" }}>
-                <ProjectImage title={project.title} />
+                <ProjectImage title={project.title} image={project.image} />
               </div>
 
               {/* Info */}

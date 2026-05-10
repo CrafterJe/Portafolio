@@ -57,6 +57,16 @@ export const projects = [
     featured: false,
   },
   {
+    id: 7,
+    title: "QRCraft",
+    description: "Generador de códigos QR personalizados con estilos avanzados de puntos, degradados, logo central y exportación en PNG y SVG.",
+    image: "/projects/qrcraft.png",
+    tags: ["React", "Vite", "Tailwind CSS", "qr-code-styling"],
+    github: "https://github.com/CrafterJe",
+    live: "https://crafterje.com/QRCraft",
+    featured: true,
+  },
+  {
     id: 3,
     title: "Telecomunicaciones",
     description: "Aplicación web para gestión de servicios telecom. Administra clientes, planes, contratos y seguimiento de servicios con arquitectura REST.",
@@ -85,16 +95,6 @@ export const projects = [
     github: "https://github.com/CrafterJe/Popular-Opinion",
     live: "",
     featured: false,
-  },
-  {
-    id: 7,
-    title: "QRCraft",
-    description: "Generador de códigos QR personalizados con estilos avanzados de puntos, degradados, logo central y exportación en PNG y SVG.",
-    image: "",
-    tags: ["React", "Vite", "Tailwind CSS", "qr-code-styling"],
-    github: "https://github.com/CrafterJe",
-    live: "https://crafterje.com/QRCraft",
-    featured: true,
   },
   {
     id: 6,
