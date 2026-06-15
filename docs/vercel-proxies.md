@@ -52,6 +52,39 @@ resuelve `./assets/` desde la raíz del dominio en vez de desde `/NombreProyecto
 
 ---
 
+## Mayúsculas / minúsculas (case-insensitive)
+
+Por defecto Vercel trata las rutas de `rewrites`/`redirects` como **case-sensitive**
+(lo hace a propósito para no generar contenido duplicado). Sin configurarlo, `/calendario`
+daría 404 y solo funcionaría `/Calendario`.
+
+Para que funcione **escribas como escribas** y la barra siempre muestre la versión canónica
+(`/Calendario`), se usan dos piezas:
+
+1. **Rewrite con clases de caracteres** → matchea cualquier combinación de mayús/minús.
+   El flag inline `(?i)` NO es confiable en Vercel (path-to-regexp compila a RegExp de JS
+   sin ese flag), por eso se usa `[Cc][Aa]...`:
+
+   ```json
+   { "source": "/:p([Cc][Aa][Ll][Ee][Nn][Dd][Aa][Rr][Ii][Oo])",        "destination": "https://mi-proyecto.vercel.app/" },
+   { "source": "/:p([Cc][Aa][Ll][Ee][Nn][Dd][Aa][Rr][Ii][Oo])/:path*", "destination": "https://mi-proyecto.vercel.app/:path*" }
+   ```
+
+2. **Redirect de la versión en minúsculas** → normaliza la URL a la forma canónica.
+   Se usa solo la minúscula (no la canónica) para evitar un bucle de redirección:
+
+   ```json
+   { "source": "/calendario",        "destination": "/Calendario",        "permanent": false },
+   { "source": "/calendario/:path*", "destination": "/Calendario/:path*", "permanent": false }
+   ```
+
+Resultado:
+- `/Calendario` → sirve directo, barra muestra `/Calendario`.
+- `/calendario` → redirige y la barra queda en `/Calendario`.
+- `/CALENDARIO`, `/CaLeNdArIo` → sirven igual (sin 404); la barra conserva ese texto.
+
+---
+
 ## Configuración requerida en el proyecto proxeado
 
 El proyecto necesita saber que sus assets viven bajo `/NombreProyecto/`.
@@ -193,7 +226,7 @@ Si algo falla dime exactamente qué está mal y corrígelo.
 | Ruta          | Framework | Destino                         | Visible en portafolio |
 |---------------|-----------|---------------------------------|-----------------------|
 | `/QRCraft`    | Vite (`base: '/QRCraft/'`) | `qr-craft-omega.vercel.app` | Sí (tarjeta en `data.ts`) |
-| `/Calendario` | Vite (`base: '/Calendario/'`) | `TU-URL-CALENDARIO.vercel.app` *(pendiente)* | No (ruta oculta, solo link directo) |
+| `/Calendario` | Vite (`base: '/Calendario/'`) | `asistente-gestion-hogar.vercel.app` | No (ruta oculta, solo link directo) |
 
 > **Ruta oculta:** para exponer un proyecto solo por link directo (sin que aparezca como tarjeta),
 > se agregan las reglas en `vercel.json` pero **no** se agrega a `app/lib/data.ts`. Eso es lo único

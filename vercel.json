@@ -1,8 +1,14 @@
 {
+  "redirects": [
+    { "source": "/qrcraft",           "destination": "/QRCraft",           "permanent": false },
+    { "source": "/qrcraft/:path*",    "destination": "/QRCraft/:path*",    "permanent": false },
+    { "source": "/calendario",        "destination": "/Calendario",        "permanent": false },
+    { "source": "/calendario/:path*", "destination": "/Calendario/:path*", "permanent": false }
+  ],
   "rewrites": [
-    { "source": "/QRCraft",        "destination": "https://qr-craft-omega.vercel.app/" },
-    { "source": "/QRCraft/:path*", "destination": "https://qr-craft-omega.vercel.app/:path*" },
-    { "source": "/Calendario",        "destination": "https://asistente-gestion-hogar.vercel.app/" },
-    { "source": "/Calendario/:path*", "destination": "https://asistente-gestion-hogar.vercel.app/:path*" }
+    { "source": "/:p([Qq][Rr][Cc][Rr][Aa][Ff][Tt])",                  "destination": "https://qr-craft-omega.vercel.app/" },
+    { "source": "/:p([Qq][Rr][Cc][Rr][Aa][Ff][Tt])/:path*",           "destination": "https://qr-craft-omega.vercel.app/:path*" },
+    { "source": "/:p([Cc][Aa][Ll][Ee][Nn][Dd][Aa][Rr][Ii][Oo])",         "destination": "https://asistente-gestion-hogar.vercel.app/" },
+    { "source": "/:p([Cc][Aa][Ll][Ee][Nn][Dd][Aa][Rr][Ii][Oo])/:path*",  "destination": "https://asistente-gestion-hogar.vercel.app/:path*" }
   ]
 }
