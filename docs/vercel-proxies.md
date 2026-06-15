@@ -190,6 +190,11 @@ Si algo falla dime exactamente qué está mal y corrígelo.
 
 ## Proyectos actuales
 
-| Ruta        | Framework | Destino                         |
-|-------------|-----------|---------------------------------|
-| `/QRCraft`  | Vite (`base: '/QRCraft/'`) | `qr-craft-omega.vercel.app` |
+| Ruta          | Framework | Destino                         | Visible en portafolio |
+|---------------|-----------|---------------------------------|-----------------------|
+| `/QRCraft`    | Vite (`base: '/QRCraft/'`) | `qr-craft-omega.vercel.app` | Sí (tarjeta en `data.ts`) |
+| `/Calendario` | Vite (`base: '/Calendario/'`) | `TU-URL-CALENDARIO.vercel.app` *(pendiente)* | No (ruta oculta, solo link directo) |
+
+> **Ruta oculta:** para exponer un proyecto solo por link directo (sin que aparezca como tarjeta),
+> se agregan las reglas en `vercel.json` pero **no** se agrega a `app/lib/data.ts`. Eso es lo único
+> que controla la visibilidad en el portafolio.

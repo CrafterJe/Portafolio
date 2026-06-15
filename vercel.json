@@ -1,6 +1,8 @@
 {
   "rewrites": [
     { "source": "/QRCraft",        "destination": "https://qr-craft-omega.vercel.app/" },
-    { "source": "/QRCraft/:path*", "destination": "https://qr-craft-omega.vercel.app/:path*" }
+    { "source": "/QRCraft/:path*", "destination": "https://qr-craft-omega.vercel.app/:path*" },
+    { "source": "/Calendario",        "destination": "https://asistente-gestion-hogar.vercel.app/" },
+    { "source": "/Calendario/:path*", "destination": "https://asistente-gestion-hogar.vercel.app/:path*" }
   ]
 }
